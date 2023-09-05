@@ -1,0 +1,33 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("MDB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model users {
+   id String @id @default(auto()) @map("_id") @db.ObjectId
+   email String @unique
+   emailConfirm Boolean @default(false)
+   userName String @unique
+   password String
+   firstName String
+   lastName String
+   avatar   String @default("https://www.slotcharter.net/wp-content/uploads/2020/02/no-avatar.png")
+   isActive Boolean @default(true)
+   createAt DateTime @default(now())
+   updateAt DateTime @default(now())
+   address  Address[]
+}
+type Address {
+    provinceId Int
+    provinceName String
+    districtId Int
+    districtName String
+    wardCode String
+    wardName String
+    title String
+    id String
+}
