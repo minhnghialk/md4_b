@@ -55,6 +55,7 @@ export default {
                 message: "registerSuccess"
             }
         }catch(err) {
+            console.log("err", err)
             let message: string = "modelErr";
 
             switch((err as PrismaErr).meta?.target) {

@@ -1,3 +1,4 @@
+import { Response } from 'express';
 /* Load file .env */
 import dotenv from 'dotenv';
 dotenv.config();

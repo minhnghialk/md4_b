@@ -5,6 +5,7 @@ import mail, {templates} from "../services/mail";
 import jwt from "../services/jwt";
 import bcrypt from 'bcrypt'
 
+
 export default {
     register: async function(req: Request, res: Response) {
        try {
@@ -28,7 +29,7 @@ export default {
                     html: templates.emailConfirm({
                         confirmLink: `${process.env.SERVER_URL}/auth/email-confirm/${jwt.createToken(modelRes.data, "300000")}`,
                         language: String(req.headers.language),
-                        productName: "Miêu Store",
+                        productName: "Wine Store",
                         productWebUrl: "abc.com",
                         receiverName: modelRes.data?.firstName + '' + modelRes.data?.lastName
                     })
@@ -37,6 +38,7 @@ export default {
 
             return res.status(modelRes.status ? 200 : 213).json(modelRes);
        }catch(err) {
+        console.log("err", err);
             return res.status(500).json({
                 messsage: Text(String(req.headers.language)).controllerErr
             })

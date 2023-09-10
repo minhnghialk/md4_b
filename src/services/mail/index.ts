@@ -7,8 +7,11 @@ export interface MailOption {
     text?: string // Văn Bản
 }
 import emailConfirm from './templates/emailConfirm'
+import sendOtp from './templates/sendOtp'
+
 export const templates = {
-    emailConfirm: emailConfirm
+    emailConfirm,
+    sendOtp
 }
 export default {
     sendMail: async (mailOption: MailOption) => {
