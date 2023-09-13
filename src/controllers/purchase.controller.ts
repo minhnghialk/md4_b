@@ -59,5 +59,37 @@ export default {
                 message: "Lỗi controller"
             })
         }
+    },
+    createOrder: async function(req: Request, res: Response) {
+        console.log("req", req.body)
+        try {
+            let modelRes = await purchaseModel.createOrder(req.body);
+            if(modelRes.status) {
+                    return res.status(200).json(modelRes);
+            }else {
+                return res.status(200).json(modelRes);
+            }
+      
+        }catch(err){
+            return res.status(500).json({
+                message: "Lỗi controller"
+            })
+        }
+    },
+    getOrder: async function(req: Request, res: Response) {
+        console.log("req", req.body)
+        try {
+            let modelRes = await purchaseModel.getOrder(req.body);
+            if(modelRes.status) {
+                    return res.status(200).json(modelRes);
+            }else {
+                return res.status(200).json(modelRes);
+            }
+      
+        }catch(err){
+            return res.status(500).json({
+                message: "Lỗi controller"
+            })
+        }
     }
 }

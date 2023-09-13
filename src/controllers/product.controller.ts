@@ -65,5 +65,21 @@ export default {
                 message: "Lỗi controller"
             })
         }
+    },
+    deleteById: async function(req: Request, res: Response) {
+        try {
+            const productId = String(req.params.productId);
+            const modelRes = await productModel.deleteById(productId);
+            
+            if (modelRes.status) {
+                return res.status(200).json(modelRes);
+            } else {
+                return res.status(404).json(modelRes);
+            }
+        } catch (err) {
+            return res.status(500).json({
+                message: "Lỗi controller"
+            });
+        }
     }
 }

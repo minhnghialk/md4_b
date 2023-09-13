@@ -122,3 +122,9 @@ model userReceiptDetail {
   userReceiptId String       @db.ObjectId
   userReceipt   userReceipts @relation(fields: [userReceiptId], references: [id])
 }
+
+model userOrder {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String
+  data   String
+}

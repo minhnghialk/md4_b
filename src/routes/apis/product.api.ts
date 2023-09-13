@@ -17,4 +17,5 @@ Router.post('/',upload.array('imgs'), productController.create)
 
 Router.get('/:productId', productController.findById)
 Router.get('/', productController.findMany)
+Router.delete('/:productId', productController.deleteById)
 export default Router;
